@@ -99,7 +99,10 @@ def agregar_titulo_individual():
     cantidad = int(input("Ingrese la cantidad disponible: "))
     nuevo_libro = {"TITULO": titulo, "CANTIDAD": cantidad}
     catalogo.append(nuevo_libro)
-    modificar_archivo(titulo,cantidad)
+    
+    with open('catalogo_libros.csv', 'a') as archivo:
+        archivo.write(f'{titulo},{cantidad}\n')
+
     print("Título ingresado correctamente.")
 
 def actualizar_ejemplares(libro):
